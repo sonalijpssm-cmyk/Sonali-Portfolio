@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sonali Nayak | UX/UI Designer &amp; Digital Product Designer</title>
+  <meta name="description" content="Personal portfolio of Sonali Nayak, a UX/UI Designer &amp; Digital Product Designer crafting websites, dashboards, and digital experiences that solve real problems.">
+
+  <!-- Google Fonts Preconnect & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header / Navigation Bar -->
+  <header class="header" id="header">
+    <div class="container header__container">
+      <a href="#" class="header__logo" aria-label="Sonali Nayak - Homepage">
+        <span class="logo__text">Sonali.</span>
+        <svg class="logo__star" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+          <path d="M12 0L14.2 8.8L22.6 4.6L16.8 11.6L24 12L16.8 12.4L22.6 19.4L14.2 15.2L12 24L9.8 15.2L1.4 19.4L7.2 12.4L0 12L7.2 11.6L1.4 4.6L9.8 8.8Z" fill="currentColor"/>
+        </svg>
+      </a>
+
+      <!-- Desktop Nav & Action -->
+      <nav class="nav" id="main-nav" aria-label="Primary Navigation">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
+          <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+          <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+        </ul>
+        <a href="#contact" class="btn btn--primary btn--header">
+          <span>LET'S TALK</span>
+          <span class="btn__arrow" aria-hidden="true">↗</span>
+        </a>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Hero / Introduction Section -->
+  <main id="main-content">
+    <section class="hero" id="hero" aria-label="Introduction">
+      <div class="container hero__container">
+        
+        <!-- Left Column: Typography & CTAs -->
+        <div class="hero__content">
+          <h1 class="hero__title">
+            <span class="hero__greeting">Hello, I'm</span>
+            <span class="hero__name">Sonali Nayak</span>
+          </h1>
+
+          <p class="hero__subtitle">UX/UI Designer &amp; Digital Product Designer</p>
+
+          <p class="hero__bio">
+            I design websites, dashboards, and digital products that solve
+            real problems through research, thoughtful design, and AI
+            tools where they make sense.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#work" class="btn btn--primary">
+              <span>VIEW MY WORK</span>
+              <span class="btn__arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="#resume" class="btn btn--outline" id="resume-download-btn">
+              <span>DOWNLOAD MY RESUME</span>
+              <span class="btn__arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Visual Artwork Composition -->
+        <div class="hero__visual">
+          <div class="hero__visual-inner">
+            <img 
+              src="assets/hero-visual.png" 
+              alt="Sonali Nayak, UX/UI and Product Designer framed with playful illustration and quote: Turning ideas into meaningful experiences." 
+              class="hero__visual-image"
+              width="406"
+              height="392"
+              loading="eager"
+              decoding="async"
+            >
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Right Scroll Cue -->
+      <div class="container hero__scroll-container">
+        <a href="#work" class="hero__scroll-link" id="scroll-explore" aria-label="Scroll down to explore work">
+          <span class="scroll__text">SCROLL TO EXPLORE</span>
+          <span class="scroll__arrow" aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
