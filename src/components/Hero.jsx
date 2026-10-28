@@ -65,11 +65,9 @@ export default function Hero() {
             </span>
           </blockquote>
 
-          {/* Personal Bio */}
+          {/* Tagline */}
           <p className="hero__bio">
-            I design websites, dashboards, and digital products that solve
-            real problems through research, thoughtful design, and AI
-            tools where they make sense.
+            I design digital experiences that feel simple and intuitive.
           </p>
 
           {/* Action Buttons */}

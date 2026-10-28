@@ -94,6 +94,14 @@ a {
   color: var(--color-headline-black);
 }
 
+.nav-pill__brand-divider {
+  width: 1px;
+  height: 14px;
+  background-color: rgba(0, 0, 0, 0.18);
+  display: inline-block;
+  margin: 0 4px;
+}
+
 .nav-pill__role-title {
   font-family: var(--font-family-body);
   font-size: 0.9375rem;
@@ -336,8 +344,8 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(300px, 44vw, 520px);
-  height: clamp(300px, 44vw, 520px);
+  width: clamp(340px, 46vw, 540px);
+  height: clamp(340px, 46vw, 540px);
   border-radius: 50%;
   background-size: cover;
   background-position: center;
@@ -355,22 +363,23 @@ a {
   pointer-events: none;
 }
 
-/* Oversized High-Contrast Black Serif Headline (Two-Line Asymmetric Layout) */
+/* Elegant, Balanced High-Contrast Black Serif Headline (Nestled comfortably within circle) */
 .hero__headline {
   position: relative;
   z-index: 4;
   font-family: var(--font-family-heading);
-  font-size: clamp(4.25rem, 11vw, 8.5rem);
+  font-size: clamp(2.75rem, 6.2vw, 4.625rem);
   font-weight: 500;
-  line-height: 0.92;
-  letter-spacing: -0.02em;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
   color: var(--color-headline-black);
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  text-shadow: 0 1px 12px rgba(194, 200, 184, 0.5);
+  max-width: clamp(300px, 42vw, 480px);
+  text-shadow: 0 1px 10px rgba(194, 200, 184, 0.4);
   pointer-events: none;
 }
 
@@ -379,11 +388,11 @@ a {
 }
 
 .hero__name-line--first {
-  transform: translateX(-24%);
+  transform: translateX(-7%);
 }
 
 .hero__name-line--last {
-  transform: translateX(18%);
+  transform: translateX(7%);
 }
 
 /* ==========================================================================
@@ -468,12 +477,13 @@ a {
 
 .hero__bio {
   font-family: var(--font-family-body);
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-body);
-  font-weight: var(--font-weight-body);
-  color: var(--color-text-secondary);
+  font-size: clamp(1.05rem, 1.35vw, 1.1875rem);
+  line-height: 1.55;
+  font-weight: 400;
+  color: #4A564A;
   max-width: 560px;
   margin: 0 auto var(--space-32);
+  letter-spacing: -0.005em;
 }
 
 .hero__actions {
@@ -1992,12 +2002,17 @@ a {
 }
 
 @media (max-width: 640px) {
+  .hero__headline {
+    font-size: clamp(2.25rem, 8.5vw, 3.125rem);
+    line-height: 1.1;
+  }
+
   .hero__name-line--first {
-    transform: translateX(-12%);
+    transform: translateX(-5%);
   }
 
   .hero__name-line--last {
-    transform: translateX(10%);
+    transform: translateX(5%);
   }
 
   .hero__arch-wrapper {
@@ -2013,8 +2028,8 @@ a {
   }
 
   .hero__circle {
-    width: clamp(260px, 72vw, 360px);
-    height: clamp(260px, 72vw, 360px);
+    width: clamp(280px, 76vw, 360px);
+    height: clamp(280px, 76vw, 360px);
   }
 
   .hero__actions {

@@ -22,13 +22,14 @@ export default function Header() {
   return (
     <header className="header" id="header">
       <div className="container header__nav-wrapper">
-        {/* Left Pill: Calligraphic Monogram + Role / Brand */}
+        {/* Left Pill: S | UX/UI Designer */}
         <a href="#" className="nav-pill nav-pill--brand" aria-label="Sonali Nayak - UX/UI Designer">
           <span className="nav-pill__script-icon">
-            <svg viewBox="0 0 32 32" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M22 8C20 6 15 5 11 8C7 11 7 16 12 18C18 20 23 21 21 26C19 29 13 30 9 27C7 25 6 22 7 20" stroke="#121512" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
+          <span className="nav-pill__brand-divider" aria-hidden="true"></span>
           <span className="nav-pill__role-title">UX/UI Designer</span>
         </a>
 
