@@ -1,15 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function Footer() {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyEmail = (e) => {
-    e.preventDefault();
-    navigator.clipboard.writeText('sonalijpssm@gmail.com');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 3000);
-  };
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -38,16 +29,14 @@ export default function Footer() {
                 <a 
                   href="mailto:sonalijpssm@gmail.com" 
                   className="footer__link-name"
-                  onClick={handleCopyEmail}
-                  title="Send email or click to copy"
+                  title="Compose email to sonalijpssm@gmail.com"
                 >
                   Email <span className="footer__link-arrow" aria-hidden="true">↗</span>
                 </a>
                 <a 
                   href="mailto:sonalijpssm@gmail.com" 
                   className="footer__link-url"
-                  onClick={handleCopyEmail}
-                  title="Click to copy email address"
+                  title="Compose email to sonalijpssm@gmail.com"
                 >
                   sonalijpssm@gmail.com
                 </a>
@@ -134,13 +123,6 @@ export default function Footer() {
           </button>
         </div>
       </div>
-
-      {/* Copy Notification Toast */}
-      {copied && (
-        <div className="portfolio-toast" role="status" aria-live="polite">
-          Email copied to clipboard! (sonalijpssm@gmail.com)
-        </div>
-      )}
     </footer>
   );
 }
