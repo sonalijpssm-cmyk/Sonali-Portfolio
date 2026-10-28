@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import ProjectCard from './ProjectCard';
 import arovitaImg from '../assets/project-arovita-app.png';
 import hospitalImg from '../assets/project-hospital-system.png';
@@ -35,92 +35,6 @@ const projects = [
 ];
 
 export default function Work() {
-  const cardRefs = useRef([]);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mediaQuery.matches) return;
-
-    const handleScroll = () => {
-      const wrappers = cardRefs.current;
-      if (!wrappers || wrappers.length < 2) return;
-
-      wrappers.forEach((wrapper, i) => {
-        if (!wrapper) return;
-        const card = wrapper.querySelector('.work-card');
-        if (!card) return;
-
-        // Sticky target position (computed from CSS top offset)
-        const computedTop = parseFloat(getComputedStyle(wrapper).top) || 90;
-
-        // Calculate overlap progress from subsequent cards (i + 1, i + 2, etc.)
-        let totalOverlapProgress = 0;
-        for (let j = i + 1; j < wrappers.length; j++) {
-          if (wrappers[j]) {
-            const nextRect = wrappers[j].getBoundingClientRect();
-            const currentRect = wrapper.getBoundingClientRect();
-            const cardHeight = currentRect.height || 420;
-            const startCovering = computedTop + cardHeight;
-            const fullyCovered = computedTop;
-
-            if (startCovering > fullyCovered) {
-              const p = Math.min(
-                Math.max((startCovering - nextRect.top) / (startCovering - fullyCovered), 0),
-                1
-              );
-              totalOverlapProgress += p;
-            }
-          }
-        }
-
-        // Apply subtle, high-end scaling and depth brightness
-        const scale = Math.max(1 - totalOverlapProgress * 0.04, 0.92);
-        const brightness = Math.max(1 - totalOverlapProgress * 0.05, 0.88);
-
-        card.style.transform = `scale(${scale})`;
-        card.style.filter = `brightness(${brightness})`;
-        card.style.transformOrigin = 'center top';
-      });
-    };
-
-    let ticking = false;
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    handleScroll();
-
-    const onMotionChange = (e) => {
-      if (e.matches) {
-        cardRefs.current.forEach((wrapper) => {
-          const card = wrapper?.querySelector('.work-card');
-          if (card) {
-            card.style.transform = '';
-            card.style.filter = '';
-          }
-        });
-      } else {
-        handleScroll();
-      }
-    };
-
-    mediaQuery.addEventListener('change', onMotionChange);
-
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-      mediaQuery.removeEventListener('change', onMotionChange);
-    };
-  }, []);
-
   return (
     <section className="work" id="work" aria-label="Selected Works">
       <div className="container work__container">
@@ -143,17 +57,10 @@ export default function Work() {
           </h2>
         </div>
 
-        {/* Project Cards Stacking Deck */}
+        {/* Project Cards Grid / Stack */}
         <div className="work__list">
-          {projects.map((project, index) => (
-            <div 
-              key={project.id} 
-              className="work-card-wrapper"
-              ref={(el) => (cardRefs.current[index] = el)}
-              style={{ zIndex: index + 1 }}
-            >
-              <ProjectCard project={project} />
-            </div>
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
 

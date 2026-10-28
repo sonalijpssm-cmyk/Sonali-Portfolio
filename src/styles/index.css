@@ -20,7 +20,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 #root {
@@ -762,23 +762,11 @@ a {
   transform: rotate(45deg) scale(1.15);
 }
 
-/* Project Cards Stacking Deck */
+/* Project Cards Stack */
 .work__list {
   display: flex;
   flex-direction: column;
-  position: relative;
-  width: 100%;
-}
-
-.work-card-wrapper {
-  position: sticky;
-  top: clamp(85px, 12vh, 115px);
-  width: 100%;
-  margin-bottom: clamp(140px, 25vh, 220px);
-}
-
-.work-card-wrapper:last-child {
-  margin-bottom: 0;
+  gap: var(--space-32);
 }
 
 .work-card {
@@ -789,14 +777,13 @@ a {
   grid-template-columns: 1.12fr 0.88fr;
   align-items: center;
   gap: clamp(1.5rem, 3.5vw, 3.5rem);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
-  transition: box-shadow var(--transition-smooth);
-  will-change: transform, filter;
-  transform-origin: center top;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
 .work-card:hover {
-  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .work-card__media {
@@ -1836,11 +1823,6 @@ a {
     border-top-right-radius: 24px;
   }
 
-  .work-card-wrapper {
-    top: clamp(72px, 10vh, 88px);
-    margin-bottom: clamp(100px, 18vh, 150px);
-  }
-
   .experience {
     padding-top: var(--space-48);
     padding-bottom: var(--space-64);
@@ -1949,22 +1931,5 @@ a {
 
   .footer__links {
     max-width: 100%;
-  }
-}
-
-/* ==========================================================================
-   REDUCED MOTION ACCESSIBILITY PREFERENCES
-   ========================================================================== */
-@media (prefers-reduced-motion: reduce) {
-  .work-card-wrapper {
-    position: static !important;
-    top: auto !important;
-    margin-bottom: var(--space-32) !important;
-  }
-
-  .work-card {
-    transform: none !important;
-    filter: none !important;
-    transition: none !important;
   }
 }
