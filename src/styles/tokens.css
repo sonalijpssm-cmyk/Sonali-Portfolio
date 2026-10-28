@@ -20,16 +20,16 @@
   --color-button-text: #0B514D;        /* Button text */
   --color-button-hover-bg: #F5BC46;    /* Button hover background */
 
-  /* Editorial Sage Hero Tokens */
-  --color-sage-bg: #CCD7CA;            /* Muted sage-green introduction canvas */
-  --color-sage-circle-from: #BFD1BD;   /* Textured circle gradient light */
-  --color-sage-circle-to: #8EA38C;     /* Textured circle gradient deep */
-  --color-sage-grid: rgba(20, 36, 22, 0.08); /* Architectural thin vertical lines */
-  --color-hero-arch: #F8FAF7;          /* Off-white semicircular shape */
-  --color-headline-black: #121512;     /* Oversized black serif headline */
-  --color-green-underline: #355E3B;    /* Subtle green underline detail */
-  --color-pill-nav-bg: rgba(255, 255, 255, 0.92);
-  --color-pill-nav-border: rgba(255, 255, 255, 0.7);
+  /* Editorial Sage Hero Tokens (Matching Reference Image) */
+  --color-sage-bg: #C2C8B8;            /* Warm muted sage green canvas */
+  --color-sage-pinstripe: rgba(255, 255, 255, 0.42); /* Fine white vertical pinstripes */
+  --color-hero-arch: #F5F5ED;          /* Off-white semicircular shape */
+  --color-headline-black: #121512;     /* Editorial black serif */
+  --color-green-zigzag: #637A56;       /* Olive green zigzag underline */
+  --color-green-underline: #637A56;    /* Olive green straight underline */
+  --color-nav-pill-bg: #FFFFFF;        /* Crisp white navigation pill */
+  --color-nav-cta-bg: #44553C;         /* Dark olive green contact button */
+  --color-nav-cta-text: #FFFFFF;
 
   /* Goal Badge Tokens */
   --color-badge-peach-bg: #FFF0E8;

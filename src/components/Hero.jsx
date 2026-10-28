@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import sageCircleTextureUrl from '../assets/sage-circle-texture.jpg';
 
 export default function Hero() {
   const [toastMessage, setToastMessage] = useState('');
@@ -16,92 +17,88 @@ export default function Hero() {
 
   return (
     <section className="hero" id="hero" aria-label="Introduction">
-      {/* Thin Vertical Architectural Grid Lines across the viewport */}
-      <div className="hero__grid-overlay" aria-hidden="true">
-        <div className="hero__grid-line"></div>
-        <div className="hero__grid-line"></div>
-        <div className="hero__grid-line"></div>
-        <div className="hero__grid-line"></div>
-        <div className="hero__grid-line"></div>
-        <div className="hero__grid-line"></div>
-      </div>
+      {/* Repeating Thin Vertical White Pinstripes across the viewport */}
+      <div className="hero__pinstripes" aria-hidden="true"></div>
 
-      {/* Upper Hero Stage: Role Eyebrow, Asymmetric Textured Sage Circle, and Oversized Serif Headline */}
-      <div className="hero__top-stage">
-        <div className="hero__role-badge">
-          <span className="hero__role-text">UX/UI &amp; DIGITAL PRODUCT DESIGNER</span>
-        </div>
-
-        <div className="hero__title-wrapper">
-          {/* Large Textured Sage-Green Circle positioned asymmetrically */}
-          <div className="hero__sage-circle" aria-hidden="true">
-            <div className="hero__sage-circle-texture"></div>
+      {/* Center Stage: Textured Mossy Sage Circle & Asymmetric Two-Line Black Serif Name */}
+      <div className="container hero__stage">
+        <div className="hero__composition">
+          {/* Mottled Mossy Sage Textured Circle */}
+          <div 
+            className="hero__circle" 
+            aria-hidden="true"
+            style={{ backgroundImage: `radial-gradient(circle at 40% 40%, rgba(130, 150, 120, 0.3) 0%, rgba(85, 105, 75, 0.55) 100%), url(${sageCircleTextureUrl})` }}
+          >
+            <div className="hero__circle-sheen"></div>
           </div>
 
-          {/* Oversized, Elegant Black Serif Headline */}
-          <h1 className="hero__headline-oversized">
-            Sonali Nayak
+          {/* Oversized High-Contrast Black Serif Headline */}
+          <h1 className="hero__headline">
+            <span className="hero__name-line hero__name-line--first">Sonali</span>
+            <span className="hero__name-line hero__name-line--last">Nayak</span>
           </h1>
         </div>
       </div>
 
-      {/* Lower Portion: Large Off-White Semicircular Shape (Arch) */}
-      <div className="hero__arch">
-        {/* Centered Large Serif Statement with Italic Emphasis and Subtle Green Underline Details */}
-        <blockquote className="hero__statement">
-          At the <span className="hero__statement-italic">heart of design</span> is an{' '}
-          <span className="hero__statement-underline-wrapper">
-            <span className="hero__statement-italic">opportunity to solve problems</span>
-            <svg 
-              className="hero__statement-underline-svg" 
-              viewBox="0 0 320 12" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg" 
-              preserveAspectRatio="none" 
-              aria-hidden="true"
+      {/* Lower Off-White Semicircular Shape (Flat top cutting behind circle, curved bottom bowl) */}
+      <div className="hero__arch-wrapper">
+        <div className="hero__arch">
+          {/* Centered Large Serif Statement with Zigzag Underline on Design and Straight Underline on solve. */}
+          <blockquote className="hero__statement">
+            <span className="hero__statement-line">
+              At the heart of{' '}
+              <span className="hero__highlight hero__highlight--design">
+                <em>Design</em>
+                <svg className="hero__zigzag-svg" viewBox="0 0 94 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M2 7L10 2L18 7L26 2L34 7L42 2L50 7L58 2L66 7L74 2L82 7L91 3" stroke="var(--color-green-zigzag)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>{' '}
+              is
+            </span>
+            <span className="hero__statement-line">an opportunity to</span>
+            <span className="hero__statement-line">
+              problem{' '}
+              <span className="hero__highlight hero__highlight--solve">
+                <em>solve.</em>
+                <span className="hero__straight-line" aria-hidden="true"></span>
+              </span>
+            </span>
+          </blockquote>
+
+          {/* Personal Bio */}
+          <p className="hero__bio">
+            I design websites, dashboards, and digital products that solve
+            real problems through research, thoughtful design, and AI
+            tools where they make sense.
+          </p>
+
+          {/* Action Buttons */}
+          <div className="hero__actions">
+            <a href="#work" className="btn btn--primary">
+              <span>VIEW MY WORK</span>
+              <span className="btn__arrow" aria-hidden="true">↗</span>
+            </a>
+            <a 
+              href="/assets/Resume.pdf" 
+              download="Sonali_Nayak_Resume.pdf"
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn btn--outline" 
+              id="resume-download-btn"
+              onClick={handleResumeClick}
             >
-              <path d="M2 9C70 3 180 3 318 8" stroke="var(--color-green-underline)" strokeWidth="3" strokeLinecap="round" />
-            </svg>
-          </span>.
-        </blockquote>
+              <span>DOWNLOAD MY RESUME</span>
+              <span className="btn__arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
 
-        {/* Sonali's Personal Details & Bio */}
-        <p className="hero__arch-subtitle">
-          UX/UI Designer &amp; Digital Product Designer
-        </p>
-
-        <p className="hero__arch-bio">
-          I design websites, dashboards, and digital products that solve
-          real problems through research, thoughtful design, and AI
-          tools where they make sense.
-        </p>
-
-        {/* Retain Existing Action Buttons */}
-        <div className="hero__actions">
-          <a href="#work" className="btn btn--primary">
-            <span>VIEW MY WORK</span>
-            <span className="btn__arrow" aria-hidden="true">↗</span>
-          </a>
-          <a 
-            href="/assets/Resume.pdf" 
-            download="Sonali_Nayak_Resume.pdf"
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="btn btn--outline" 
-            id="resume-download-btn"
-            onClick={handleResumeClick}
-          >
-            <span>DOWNLOAD MY RESUME</span>
-            <span className="btn__arrow" aria-hidden="true">↗</span>
-          </a>
-        </div>
-
-        {/* Centered Scroll Indicator */}
-        <div className="hero__scroll">
-          <a href="#services" className="hero__scroll-link" id="scroll-explore" aria-label="Scroll down to explore work">
-            <span className="scroll__text">SCROLL TO EXPLORE</span>
-            <span className="scroll__arrow" aria-hidden="true">↓</span>
-          </a>
+          {/* Scroll Explore Indicator */}
+          <div className="hero__scroll">
+            <a href="#services" className="hero__scroll-link" id="scroll-explore" aria-label="Scroll down to explore work">
+              <span className="scroll__text">SCROLL TO EXPLORE</span>
+              <span className="scroll__arrow" aria-hidden="true">↓</span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -113,4 +110,5 @@ export default function Hero() {
     </section>
   );
 }
+
 
