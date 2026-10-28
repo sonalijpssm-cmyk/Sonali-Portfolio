@@ -837,7 +837,7 @@ a {
   line-height: var(--line-height-body);
   color: var(--color-text-secondary);
   max-width: 440px;
-  margin-bottom: var(--space-28);
+  margin-bottom: var(--space-24);
 }
 
 .work-card__cta {
