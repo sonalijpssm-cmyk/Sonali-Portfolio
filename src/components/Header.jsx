@@ -21,7 +21,7 @@ export default function Header() {
 
   return (
     <header className="header" id="header">
-      <div className="container header__container">
+      <div className="header__pill">
         <a href="#" className="header__logo" aria-label="Sonali Nayak - Homepage">
           <span className="logo__text">Sonali.</span>
           <svg className="logo__star" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
