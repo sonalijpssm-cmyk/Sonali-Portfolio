@@ -43,11 +43,6 @@ export default function Header() {
               <a href="#contact" className="nav__link" onClick={() => setIsOpen(false)}>Contact</a>
             </li>
           </ul>
-
-          <a href="#contact" className="btn btn--primary btn--header" onClick={() => setIsOpen(false)}>
-            <span>LET'S TALK</span>
-            <span className="btn__arrow" aria-hidden="true">↗</span>
-          </a>
         </nav>
 
         {/* Mobile Hamburger Toggle */}

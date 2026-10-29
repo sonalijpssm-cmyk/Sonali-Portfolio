@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import heroVisualUrl from '../assets/hero-visual.png';
+import portraitCompositionUrl from '../assets/portrait-composition.png';
 
 export default function Hero() {
   const [toastMessage, setToastMessage] = useState('');
@@ -80,11 +80,11 @@ export default function Hero() {
             onMouseLeave={handleMouseLeave}
           >
             <img 
-              src={heroVisualUrl} 
+              src={portraitCompositionUrl} 
               alt="Sonali Nayak, UX/UI and Product Designer framed with playful illustration and quote: Turning ideas into meaningful experiences." 
               className="hero__visual-image"
-              width="440"
-              height="424"
+              width="920"
+              height="1024"
               loading="eager"
               decoding="async"
             />

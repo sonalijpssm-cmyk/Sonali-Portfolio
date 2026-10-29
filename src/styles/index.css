@@ -337,12 +337,13 @@ a {
   justify-content: center;
   align-items: center;
   position: relative;
+  width: 100%;
 }
 
 .hero__visual-inner {
   position: relative;
   width: 100%;
-  max-width: 440px;
+  max-width: 460px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -355,10 +356,16 @@ a {
 
 .hero__visual-image {
   width: 100%;
+  max-width: 100%;
   height: auto;
-  display: block;
+  aspect-ratio: 920 / 1024;
   object-fit: contain;
+  display: block;
   filter: drop-shadow(0 14px 28px rgba(11, 81, 77, 0.08));
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 /* ==========================================================================
