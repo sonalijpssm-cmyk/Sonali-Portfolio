@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import sageCircleTextureUrl from '../assets/sage-circle-texture.jpg';
+import React, { useState, useRef } from 'react';
+import heroVisualUrl from '../assets/hero-visual.png';
 
 export default function Hero() {
   const [toastMessage, setToastMessage] = useState('');
+  const visualRef = useRef(null);
 
   const handleResumeClick = () => {
     showToast('Downloading Sonali Nayak Resume...');
@@ -15,69 +16,48 @@ export default function Hero() {
     }, 3200);
   };
 
+  // Subtle interactive 3D perspective tilt on desktop hover
+  const handleMouseMove = (e) => {
+    if (!visualRef.current || window.innerWidth <= 992) return;
+    const rect = visualRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    const tiltX = (y / (rect.height / 2)) * -4;
+    const tiltY = (x / (rect.width / 2)) * 4;
+    visualRef.current.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-4px)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (!visualRef.current) return;
+    visualRef.current.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)';
+  };
+
   return (
     <section className="hero" id="hero" aria-label="Introduction">
-      {/* Repeating Thin Vertical White Pinstripes across the viewport */}
-      <div className="hero__pinstripes" aria-hidden="true"></div>
-
-      {/* Center Stage: Textured Mossy Sage Circle & Asymmetric Two-Line Black Serif Name */}
-      <div className="container hero__stage">
-        <div className="hero__composition">
-          {/* Mottled Mossy Sage Textured Circle */}
-          <div 
-            className="hero__circle" 
-            aria-hidden="true"
-            style={{ backgroundImage: `radial-gradient(circle at 40% 40%, rgba(130, 150, 120, 0.3) 0%, rgba(85, 105, 75, 0.55) 100%), url(${sageCircleTextureUrl})` }}
-          >
-            <div className="hero__circle-sheen"></div>
-          </div>
-
-          {/* Oversized High-Contrast Black Serif Headline */}
-          <h1 className="hero__headline">
-            <span className="hero__name-line hero__name-line--first">Sonali</span>
-            <span className="hero__name-line hero__name-line--last">Nayak</span>
+      <div className="container hero__container">
+        
+        {/* Left Column: Typography & CTAs */}
+        <div className="hero__content">
+          <h1 className="hero__title">
+            <span className="hero__greeting">Hello, I'm</span>
+            <span className="hero__name">Sonali Nayak</span>
           </h1>
-        </div>
-      </div>
 
-      {/* Lower Off-White Semicircular Shape (Flat top cutting behind circle, curved bottom bowl) */}
-      <div className="hero__arch-wrapper">
-        <div className="hero__arch">
-          {/* Centered Large Serif Statement with Zigzag Underline on Design and Straight Underline on solve. */}
-          <blockquote className="hero__statement">
-            <span className="hero__statement-line">
-              At the heart of{' '}
-              <span className="hero__highlight hero__highlight--design">
-                <em>Design</em>
-                <svg className="hero__zigzag-svg" viewBox="0 0 94 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M2 7L10 2L18 7L26 2L34 7L42 2L50 7L58 2L66 7L74 2L82 7L91 3" stroke="var(--color-green-zigzag)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>{' '}
-              is
-            </span>
-            <span className="hero__statement-line">an opportunity to</span>
-            <span className="hero__statement-line">
-              problem{' '}
-              <span className="hero__highlight hero__highlight--solve">
-                <em>solve.</em>
-                <span className="hero__straight-line" aria-hidden="true"></span>
-              </span>
-            </span>
-          </blockquote>
+          <p className="hero__subtitle">UX/UI Designer &amp; Digital Product Designer</p>
 
-          {/* Tagline */}
           <p className="hero__bio">
-            I design digital experiences that feel simple and intuitive.
+            I design websites, dashboards, and digital products that solve
+            real problems through research, thoughtful design, and AI
+            tools where they make sense.
           </p>
 
-          {/* Action Buttons */}
           <div className="hero__actions">
             <a href="#work" className="btn btn--primary">
               <span>VIEW MY WORK</span>
               <span className="btn__arrow" aria-hidden="true">↗</span>
             </a>
             <a 
-              href="/assets/Resume.pdf" 
+              href="/assets/Sonali_Nayak_Resume.pdf" 
               download="Sonali_Nayak_Resume.pdf"
               target="_blank" 
               rel="noopener noreferrer"
@@ -89,15 +69,36 @@ export default function Hero() {
               <span className="btn__arrow" aria-hidden="true">↗</span>
             </a>
           </div>
+        </div>
 
-          {/* Scroll Explore Indicator */}
-          <div className="hero__scroll">
-            <a href="#services" className="hero__scroll-link" id="scroll-explore" aria-label="Scroll down to explore work">
-              <span className="scroll__text">SCROLL TO EXPLORE</span>
-              <span className="scroll__arrow" aria-hidden="true">↓</span>
-            </a>
+        {/* Right Column: Visual Artwork Composition */}
+        <div className="hero__visual">
+          <div 
+            className="hero__visual-inner"
+            ref={visualRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
+            <img 
+              src={heroVisualUrl} 
+              alt="Sonali Nayak, UX/UI and Product Designer framed with playful illustration and quote: Turning ideas into meaningful experiences." 
+              className="hero__visual-image"
+              width="440"
+              height="424"
+              loading="eager"
+              decoding="async"
+            />
           </div>
         </div>
+
+      </div>
+
+      {/* Bottom Center Scroll Cue */}
+      <div className="hero__scroll-container">
+        <a href="#work" className="hero__scroll-link" id="scroll-explore" aria-label="Scroll down to explore work">
+          <span className="scroll__text">SCROLL TO EXPLORE</span>
+          <span className="scroll__arrow" aria-hidden="true">↓</span>
+        </a>
       </div>
 
       {toastMessage && (
@@ -108,5 +109,3 @@ export default function Hero() {
     </section>
   );
 }
-
-
