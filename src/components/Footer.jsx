@@ -6,22 +6,59 @@ export default function Footer() {
     email: '',
     message: ''
   });
-  const [status, setStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState({ type: '', message: '' });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
 
-    setStatus('Thank you! Your message has been sent.');
-    setFormData({ name: '', email: '', message: '' });
-    setTimeout(() => {
-      setStatus('');
-    }, 4500);
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    const formDataObj = new FormData(form);
+    formDataObj.append("access_key", "6eeece0f-34e3-4c31-bcef-65358751ff50");
+
+    const originalText = submitBtn ? submitBtn.textContent : "Send message";
+
+    if (submitBtn) {
+      submitBtn.textContent = "Sending...";
+      submitBtn.disabled = true;
+    }
+    setIsSubmitting(true);
+    setStatus({ type: '', message: '' });
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataObj
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Success! Your message has been sent.");
+        setFormData({ name: '', email: '', message: '' });
+        form.reset();
+        setStatus({ type: 'success', message: 'Success! Your message has been sent.' });
+      } else {
+        alert("Error: " + (data.message || "Something went wrong."));
+        setStatus({ type: 'error', message: "Error: " + (data.message || "Failed to submit form.") });
+      }
+    } catch (error) {
+      alert("Something went wrong. Please try again.");
+      setStatus({ type: 'error', message: "Something went wrong. Please try again." });
+    } finally {
+      if (submitBtn) {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToTop = () => {
@@ -47,71 +84,83 @@ export default function Footer() {
             </p>
 
             {/* Contact Form Card */}
-            <div className="footer__form-card">
+            <div className="footer__form-card" id="get-in-touch">
               <h3 className="footer__form-title">Get in touch</h3>
               <p className="footer__form-desc">
                 Send me a message and I'll get back to you soon.
               </p>
 
-              {status ? (
-                <div className="footer__form-success" role="status">
-                  {status}
+              {status.message && (
+                <div 
+                  className={`footer__form-alert footer__form-alert--${status.type}`} 
+                  role="status"
+                >
+                  {status.message}
                 </div>
-              ) : (
-                <form className="footer__form" onSubmit={handleSubmit}>
-                  <div className="footer__form-group">
-                    <label htmlFor="footer-name" className="footer__form-label">
-                      Name
-                    </label>
-                    <input 
-                      id="footer-name"
-                      type="text" 
-                      name="name" 
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Your name" 
-                      required 
-                      className="footer__form-input" 
-                    />
-                  </div>
-
-                  <div className="footer__form-group">
-                    <label htmlFor="footer-email" className="footer__form-label">
-                      Email
-                    </label>
-                    <input 
-                      id="footer-email"
-                      type="email" 
-                      name="email" 
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="you@example.com" 
-                      required 
-                      className="footer__form-input" 
-                    />
-                  </div>
-
-                  <div className="footer__form-group">
-                    <label htmlFor="footer-message" className="footer__form-label">
-                      Message
-                    </label>
-                    <textarea 
-                      id="footer-message"
-                      name="message" 
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell me about your project..." 
-                      rows="4" 
-                      required 
-                      className="footer__form-textarea" 
-                    />
-                  </div>
-
-                  <button type="submit" className="footer__form-submit">
-                    Send message
-                  </button>
-                </form>
               )}
+
+              <form id="form" className="footer__form" onSubmit={handleSubmit}>
+                <input type="hidden" name="access_key" value="6eeece0f-34e3-4c31-bcef-65358751ff50" />
+                <input type="hidden" name="from_name" value="Sonali Portfolio Website" />
+                <input type="hidden" name="subject" value="New message from Sonali Nayak Portfolio" />
+                <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
+                <div className="footer__form-group">
+                  <label htmlFor="footer-name" className="footer__form-label">
+                    Name
+                  </label>
+                  <input 
+                    id="footer-name"
+                    type="text" 
+                    name="name" 
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your name" 
+                    required 
+                    className="footer__form-input" 
+                  />
+                </div>
+
+                <div className="footer__form-group">
+                  <label htmlFor="footer-email" className="footer__form-label">
+                    Email
+                  </label>
+                  <input 
+                    id="footer-email"
+                    type="email" 
+                    name="email" 
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="you@example.com" 
+                    required 
+                    className="footer__form-input" 
+                  />
+                </div>
+
+                <div className="footer__form-group">
+                  <label htmlFor="footer-message" className="footer__form-label">
+                    Message
+                  </label>
+                  <textarea 
+                    id="footer-message"
+                    name="message" 
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell me about your project..." 
+                    rows="4" 
+                    required 
+                    className="footer__form-textarea" 
+                  />
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="footer__form-submit"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : "Send message"}
+                </button>
+              </form>
             </div>
           </div>
 
