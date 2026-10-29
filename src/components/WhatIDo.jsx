@@ -74,6 +74,8 @@ export default function WhatIDo() {
                 src={polaroidImg} 
                 alt="Workspace desk setup with laptop, plant, notebook, and coffee with caption: Curiosity, always." 
                 className="services__polaroid-image"
+                width="1024"
+                height="910"
                 loading="lazy"
                 decoding="async"
               />

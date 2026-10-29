@@ -486,9 +486,15 @@ a {
 
 .services__polaroid-image {
   width: 100%;
+  max-width: 100%;
   height: auto;
+  aspect-ratio: 1024 / 910;
   display: block;
   object-fit: contain;
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .services__list {
@@ -1245,7 +1251,7 @@ a {
   font-weight: 700;
   color: var(--color-text-white);
   letter-spacing: -0.01em;
-  margin-bottom: var(--space-28);
+  margin-bottom: var(--space-20);
 }
 
 .quote-banner__footer {
