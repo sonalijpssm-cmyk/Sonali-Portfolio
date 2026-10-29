@@ -1,62 +1,42 @@
 import React, { useState } from 'react';
 
 export default function Footer() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [result, setResult] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState({ type: '', message: '' });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-    const submitBtn = form.querySelector('button[type="submit"]');
-
-    const formDataObj = new FormData(form);
-    formDataObj.append("access_key", "6eeece0f-34e3-4c31-bcef-65358751ff50");
-
-    const originalText = submitBtn ? submitBtn.textContent : "Send message";
-
-    if (submitBtn) {
-      submitBtn.textContent = "Sending...";
-      submitBtn.disabled = true;
-    }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setIsSubmitting(true);
-    setStatus({ type: '', message: '' });
+    setResult("Sending...");
+
+    const form = event.target;
+    const formData = new FormData(form);
+    formData.append("access_key", "6eeece0f-34e3-4c31-bcef-65358751ff50");
+    formData.append("from_name", "Sonali Nayak Portfolio");
+    formData.append("subject", "New Message from Portfolio Get in Touch Form");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formDataObj
+        body: formData
       });
 
       const data = await response.json();
 
-      if (response.ok) {
+      if (data.success) {
+        setResult("Success! Your message has been sent.");
         alert("Success! Your message has been sent.");
-        setFormData({ name: '', email: '', message: '' });
         form.reset();
-        setStatus({ type: 'success', message: 'Success! Your message has been sent.' });
       } else {
-        alert("Error: " + (data.message || "Something went wrong."));
-        setStatus({ type: 'error', message: "Error: " + (data.message || "Failed to submit form.") });
+        const errorMsg = "Error: " + (data.message || "Failed to send message.");
+        setResult(errorMsg);
+        alert(errorMsg);
       }
     } catch (error) {
-      alert("Something went wrong. Please try again.");
-      setStatus({ type: 'error', message: "Something went wrong. Please try again." });
+      const errorMsg = "Something went wrong. Please try again.";
+      setResult(errorMsg);
+      alert(errorMsg);
     } finally {
-      if (submitBtn) {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-      }
       setIsSubmitting(false);
     }
   };
@@ -90,21 +70,16 @@ export default function Footer() {
                 Send me a message and I'll get back to you soon.
               </p>
 
-              {status.message && (
+              {result && (
                 <div 
-                  className={`footer__form-alert footer__form-alert--${status.type}`} 
+                  className={`footer__form-alert ${result.startsWith("Success") ? "footer__form-alert--success" : "footer__form-alert--error"}`} 
                   role="status"
                 >
-                  {status.message}
+                  {result}
                 </div>
               )}
 
               <form id="form" className="footer__form" onSubmit={handleSubmit}>
-                <input type="hidden" name="access_key" value="6eeece0f-34e3-4c31-bcef-65358751ff50" />
-                <input type="hidden" name="from_name" value="Sonali Portfolio Website" />
-                <input type="hidden" name="subject" value="New message from Sonali Nayak Portfolio" />
-                <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
-
                 <div className="footer__form-group">
                   <label htmlFor="footer-name" className="footer__form-label">
                     Name
@@ -113,8 +88,6 @@ export default function Footer() {
                     id="footer-name"
                     type="text" 
                     name="name" 
-                    value={formData.name}
-                    onChange={handleChange}
                     placeholder="Your name" 
                     required 
                     className="footer__form-input" 
@@ -129,8 +102,6 @@ export default function Footer() {
                     id="footer-email"
                     type="email" 
                     name="email" 
-                    value={formData.email}
-                    onChange={handleChange}
                     placeholder="you@example.com" 
                     required 
                     className="footer__form-input" 
@@ -144,8 +115,6 @@ export default function Footer() {
                   <textarea 
                     id="footer-message"
                     name="message" 
-                    value={formData.message}
-                    onChange={handleChange}
                     placeholder="Tell me about your project..." 
                     rows="4" 
                     required 
