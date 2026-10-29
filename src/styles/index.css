@@ -471,30 +471,94 @@ a {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
 }
 
 .services__polaroid-card {
   width: 100%;
   max-width: 440px;
-  transition: transform var(--transition-smooth);
-  filter: drop-shadow(0 14px 32px rgba(11, 81, 77, 0.08));
+  background-color: #FEE4A7;
+  border-radius: clamp(28px, 4vw, 38px);
+  padding: clamp(14px, 2.2vw, 20px) clamp(14px, 2.2vw, 20px) clamp(16px, 2.5vw, 22px);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+  box-shadow: 0 14px 32px rgba(11, 81, 77, 0.08);
+  position: relative;
+  overflow: hidden;
 }
 
 .services__polaroid-card:hover {
   transform: translateY(-4px) rotate(-0.5deg);
+  box-shadow: 0 20px 44px rgba(11, 81, 77, 0.12);
 }
 
-.services__polaroid-image {
+/* Rounded Peach Inner Frame */
+.services__polaroid-inner-frame {
+  width: 100%;
+  background-color: #F8E2D4;
+  border-radius: clamp(18px, 2.8vw, 26px);
+  padding: clamp(10px, 1.6vw, 14px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Photo Box with Dashed Border */
+.services__polaroid-photo-box {
+  width: 100%;
+  border-radius: clamp(14px, 2.2vw, 18px);
+  border: 1.5px dashed rgba(255, 255, 255, 0.85);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  background-color: #EDE8DE;
+}
+
+/* Single Workspace Image - Sharp, contained, correct aspect ratio */
+.services__polaroid-photo {
   width: 100%;
   max-width: 100%;
   height: auto;
-  aspect-ratio: 1024 / 910;
+  aspect-ratio: 1448 / 1086;
+  object-fit: cover;
   display: block;
-  object-fit: contain;
   image-rendering: auto;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: translateZ(0);
+}
+
+/* Caption Footer */
+.services__polaroid-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: clamp(12px, 2vw, 18px);
+  padding-left: clamp(4px, 1vw, 8px);
+  padding-right: clamp(4px, 1vw, 8px);
+}
+
+.services__polaroid-quote {
+  font-family: var(--font-family-heading);
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.services__polaroid-star {
+  color: var(--color-accent-gold);
+  flex-shrink: 0;
+  display: inline-block;
+  transform-origin: center;
+  transition: transform var(--transition-smooth);
+}
+
+.services__polaroid-card:hover .services__polaroid-star {
+  transform: rotate(45deg) scale(1.1);
 }
 
 .services__list {

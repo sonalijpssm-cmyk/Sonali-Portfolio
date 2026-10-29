@@ -1,5 +1,5 @@
 import React from 'react';
-import polaroidImg from '../assets/what-i-do-polaroid.png';
+import workspaceImg from '../assets/workspace-desk.png';
 
 const services = [
   {
@@ -67,18 +67,31 @@ export default function WhatIDo() {
         {/* 2-Column Grid */}
         <div className="services__grid">
           
-          {/* Left Column: Polaroid Artwork */}
+          {/* Left Column: Clean Polaroid Artwork without duplicate layers or black corners */}
           <div className="services__polaroid-wrapper">
             <div className="services__polaroid-card">
-              <img 
-                src={polaroidImg} 
-                alt="Workspace desk setup with laptop, plant, notebook, and coffee with caption: Curiosity, always." 
-                className="services__polaroid-image"
-                width="1024"
-                height="910"
-                loading="lazy"
-                decoding="async"
-              />
+              {/* Rounded Peach Inner Frame containing the single high-res workspace photo */}
+              <div className="services__polaroid-inner-frame">
+                <div className="services__polaroid-photo-box">
+                  <img 
+                    src={workspaceImg} 
+                    alt="Workspace desk setup with laptop, plant, notebook, and coffee" 
+                    className="services__polaroid-photo"
+                    width="1448"
+                    height="1086"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+
+              {/* Caption Footer */}
+              <div className="services__polaroid-caption">
+                <span className="services__polaroid-quote">Curiosity, always.</span>
+                <svg className="services__polaroid-star" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false">
+                  <path d="M12 0L14.2 8.8L22.6 4.6L16.8 11.6L24 12L16.8 12.4L22.6 19.4L14.2 15.2L12 24L9.8 15.2L1.4 19.4L7.2 12.4L0 12L7.2 11.6L1.4 4.6L9.8 8.8Z" fill="currentColor"/>
+                </svg>
+              </div>
             </div>
           </div>
 
