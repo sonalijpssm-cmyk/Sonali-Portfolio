@@ -12,7 +12,8 @@ const skills = [
 
 export default function ExperienceSkills() {
   return (
-    <section className="experience" id="experience" aria-label="Experience and Skills">
+    <section className="experience" id="experience-skills" aria-label="Experience and Skills">
+      <span id="experience" className="sr-only" aria-hidden="true" />
       <div className="container experience__container">
         
         {/* Top Header Row with Star Icon */}

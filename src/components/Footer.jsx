@@ -50,6 +50,7 @@ export default function Footer() {
 
   return (
     <footer className="footer" id="contact" role="contentinfo">
+      <span id="footer" className="sr-only" aria-hidden="true" />
       <div className="container footer__container">
         {/* Main Footer Content */}
         <div className="footer__main">

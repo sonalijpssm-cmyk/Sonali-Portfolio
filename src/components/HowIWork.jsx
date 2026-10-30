@@ -42,7 +42,9 @@ const steps = [
 export default function HowIWork() {
   return (
     <section className="how-i-work" id="from-questions-to-clarity" aria-label="From Questions to Clarity - How I work">
-      {/* Anchor alias so #process still navigates here */}
+      {/* Anchor aliases so #question-to-clarity, #questions-to-clarity and #process all navigate here */}
+      <span id="question-to-clarity" className="sr-only" aria-hidden="true" />
+      <span id="questions-to-clarity" className="sr-only" aria-hidden="true" />
       <span id="process" className="sr-only" aria-hidden="true" />
       <div className="container how-i-work__container">
         

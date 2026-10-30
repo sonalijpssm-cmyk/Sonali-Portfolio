@@ -7,6 +7,7 @@ import perspectivesImg from '../assets/about-perspectives.png';
 export default function AboutMe() {
   return (
     <section className="about-me" id="about" aria-label="A little about me">
+      <span id="little-about-me" className="sr-only" aria-hidden="true" />
       <div className="container about-me__container">
         
         {/* Section Header: 2 Columns */}

@@ -33,7 +33,8 @@ export default function Hero() {
   };
 
   return (
-    <section className="hero" id="hero" aria-label="Introduction">
+    <section className="hero" id="introduction" aria-label="Introduction">
+      <span id="hero" className="sr-only" aria-hidden="true" />
       <div className="container hero__container">
         
         {/* Left Column: Typography & CTAs */}

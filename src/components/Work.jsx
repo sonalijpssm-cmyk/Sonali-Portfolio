@@ -37,6 +37,8 @@ const projects = [
 export default function Work() {
   return (
     <section className="work" id="work" aria-label="Selected Works">
+      <span id="selected-work" className="sr-only" aria-hidden="true" />
+      <span id="selected-works" className="sr-only" aria-hidden="true" />
       <div className="container work__container">
         
         {/* Section Header */}

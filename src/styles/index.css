@@ -652,7 +652,7 @@ a {
   background-color: var(--color-background);
   padding-top: var(--space-80);
   padding-bottom: var(--space-96);
-  border-top: 1px solid rgba(11, 81, 77, 0.1);
+  border-top: none;
   position: relative;
 }
 
@@ -826,6 +826,8 @@ a {
   padding-bottom: var(--space-96);
   border-top-left-radius: 36px;
   border-top-right-radius: 36px;
+  border-bottom-left-radius: 36px;
+  border-bottom-right-radius: 36px;
   position: relative;
 }
 
@@ -973,6 +975,8 @@ a {
   padding-bottom: var(--space-80);
   border-top-left-radius: 36px;
   border-top-right-radius: 36px;
+  border-bottom-left-radius: 36px;
+  border-bottom-right-radius: 36px;
   position: relative;
 }
 
@@ -1286,6 +1290,10 @@ a {
   color: var(--color-text-white);
   padding-top: clamp(4rem, 8vw, 6.5rem);
   padding-bottom: clamp(4rem, 8vw, 6.5rem);
+  border-top-left-radius: 36px;
+  border-top-right-radius: 36px;
+  border-bottom-left-radius: 36px;
+  border-bottom-right-radius: 36px;
   position: relative;
   overflow: hidden;
 }
@@ -1946,6 +1954,8 @@ a {
     padding-bottom: var(--space-64);
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
   }
 
   .experience {
@@ -1953,6 +1963,8 @@ a {
     padding-bottom: var(--space-64);
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
   }
 
   .about-me {
@@ -1963,6 +1975,10 @@ a {
   .quote-banner {
     padding-top: var(--space-48);
     padding-bottom: var(--space-48);
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
   }
 
   .footer {

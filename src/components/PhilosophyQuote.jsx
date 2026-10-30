@@ -2,7 +2,8 @@ import React from 'react';
 
 export default function PhilosophyQuote() {
   return (
-    <section className="quote-banner" aria-label="Design Philosophy Quote">
+    <section className="quote-banner" id="quote" aria-label="Design Philosophy Quote">
+      <span id="quote-section" className="sr-only" aria-hidden="true" />
       {/* Background Ambient Glows & Geometric Motifs */}
       <div className="quote-banner__ambient-glow" aria-hidden="true" />
       <div className="quote-banner__circle-motif" aria-hidden="true" />

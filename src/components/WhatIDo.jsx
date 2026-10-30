@@ -55,7 +55,8 @@ const services = [
 
 export default function WhatIDo() {
   return (
-    <section className="services" id="services" aria-label="What I do">
+    <section className="services" id="what-i-do" aria-label="What I do">
+      <span id="services" className="sr-only" aria-hidden="true" />
       <div className="container services__container">
         
         {/* Section Header */}
